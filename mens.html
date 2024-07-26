@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crimson Elite - Luxury Men's Shirts</title>
+    <meta name="description" content="Experience unparalleled luxury with Crimson Elite's premium men's shirts. Handcrafted excellence for the distinguished gentleman.">
+    <meta name="keywords" content="luxury shirts, men's fashion, premium clothing, bespoke shirts">
+    <link rel="canonical" href="https://www.crimsonelite.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ff0000;
+            --secondary-color: #fdfcfc;
+            --accent-color: #FFD700;
+            --text-color: #333333;
+            --background-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: rgb(255, 0, 0);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        header.sticky {
+            background-color: rgb(255, 0, 0);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('_daf2cf43-0acf-49f9-a7f5-0c8adb3beb90.jpeg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--secondary-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .featured-products {
+            padding: 100px 0;
+            background-color: var(--secondary-color);
+        }
+
+        .featured-products h2 {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 60px;
+            color: var(--primary-color);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .product-info p {
+            font-size: 18px;
+            color: var(--text-color);
+            font-weight: bold;
+        }
+
+        .product-actions {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .product-actions button {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-actions button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .about-us {
+            padding: 100px 0;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        .about-us h2 {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 60px;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .about-text {
+            flex: 1;
+            padding-right: 60px;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            flex: 1;
+            height: 500px;
+            background-image: url('https://images.unsplash.com/photo-1513593771513-7b58b6c4af38');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: var(--text-color);
+            color: var(--secondary-color);
+            padding: 60px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin-bottom: 30px;
+            min-width: 200px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .social-icons a {
+            color: var(--secondary-color);
+            font-size: 24px;
+            margin: 0 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        #newsletter-form {
+            margin-top: 30px;
+        }
+
+        #newsletter-form input[type="email"] {
+            padding: 10px;
+            width: 70%;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 16px;
+        }
+
+        #newsletter-form button {
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+            border-radius: 0 5px 5px 0;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #newsletter-form button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .blog-section {
+            padding: 100px 0;
+            background-color: var(--background-color);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .blog-post {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .blog-content p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--accent-color);
+        }
+
+        #cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        #cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        #cart-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--secondary-color);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+        }
+
+        #cart-items {
+            margin-bottom: 20px;
+        }
+
+        #cart-total {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        #modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .product-page {
+            padding: 100px 0;
+        }
+
+        .product-details {
+            display: flex;
+            gap: 40px;
+        }
+
+        .product-images {
+            flex: 1;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-description {
+            margin-bottom: 20px;
+        }
+
+        .product-reviews {
+            margin-top: 40px;
+        }
+
+        .review {
+            background-color: var(--secondary-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .custom-designer {
+            padding: 100px 0;
+            background-color: var(--background-color);
+        }
+
+        .designer-interface {
+            display: flex;
+            gap: 40px;
+        }
+
+        .designer-options {
+            flex: 1;
+        }
+
+        .designer-preview {
+            flex: 1;
+        }
+
+        .size-guide {
+            margin-top: 40px;
+        }
+
+        .size-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .size-table th, .size-table td {
+            border: 1px solid var(--text-color);
+            padding: 10px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .about-content, .product-details, .designer-interface {
+                flex-direction: column;
+            }
+
+            .about-text, .about-image, .product-images, .product-info, .designer-options, .designer-preview {
+                width: 100%;
+            }
+
+            .footer-section {
+                flex-basis: 100%;
+            }
+        }
+
+        /* Zoom effect for product images */
+        .zoom-container {
+            overflow: hidden;
+        }
+
+        .zoom-image {
+            transition: transform 0.3s ease;
+        }
+
+        .zoom-container:hover .zoom-image {
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Crimson Elite</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li id="cart-icon"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Elevate Your Style</h1>
+                <p>Experience unparalleled luxury with our premium men's shirts</p>
+                <a href="#products" class="cta-button">Shop Now</a>
+            </div>
+        </section>
+
+        <section id="products" class="featured-products">
+            <div class="container">
+                <h2>Featured Collections</h2>
+                <div class="product-grid" id="product-grid">
+                    <!-- Products will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-us">
+            <div class="container">
+                <h2>The Crimson Elite Experience</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>At Crimson Elite, we redefine luxury in men's fashion. Our shirts are more than just garments; they are a statement of sophistication and success. Crafted from the finest materials and tailored to perfection, each Crimson Elite shirt is a masterpiece of sartorial excellence.</p>
+                        <p>We understand that true elegance lies in the details. That's why we focus on creating shirts that not only look impeccable but also feel extraordinary. From our proprietary fabric blends to our meticulous stitching, every aspect of a Crimson Elite shirt is designed to elevate your style and comfort.</p>
+                        <p>Join the ranks of discerning gentlemen who choose Crimson Elite. Experience the perfect fusion of timeless elegance and modern sophistication. With Crimson Elite, you're not just wearing a shirt – you're wearing a legacy.</p>
+                    </div>
+                    <div class="about-image"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="blog-section">
+            <div class="container">
+                <h2>Style Insights</h2>
+                <div class="blog-grid">
+                    <div class="blog-post">
+                        <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1617127365659-c47fa864d8bc')"></div>
+                        <div class="blog-content">
+                            <h3>The Art of Shirt Pairing</h3>
+                            <p>Discover the secrets to creating perfect outfit combinations with your Crimson Elite shirts.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                    <div class="blog-post">
+                        <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1598032895397-b9472444bf93')"></div>
+                        <div class="blog-content">
+                            <h3>Caring for Luxury Fabrics</h3>
+                            <p>Learn how to maintain the pristine quality of your Crimson Elite shirts for years to come.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                    <div class="blog-post">
+                        <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1604695573706-53170668f6a6')"></div>
+                        <div class="blog-content">
+                            <h3>The History of Men's Dress Shirts</h3>
+                            <p>Explore the fascinating evolution of men's dress shirts from ancient times to modern day.</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="custom-designer" class="custom-designer">
+            <div class="container">
+                <h2>Design Your Own Shirt</h2>
+                <div class="designer-interface">
+                    <div class="designer-options">
+                        <!-- Options for customization will be added here -->
+                    </div>
+                    <div class="designer-preview">
+                        <!-- Preview of the custom shirt will be shown here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="size-guide" class="size-guide">
+            <div class="container">
+                <h2>Size Guide</h2>
+                <table class="size-table">
+                    <thead>
+                        <tr>
+                            <th>Size</th>
+                            <th>Neck</th>
+                            <th>Chest</th>
+                            <th>Waist</th>
+                            <th>Sleeve</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Size information will be added here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Customer Care</h3>
+                    <ul>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <ul>
+                        <li>Email: info@crimsonelite.com</li>
+                        <li>Phone: +1 (800) 555-ELITE</li>
+                        <li>Address: 123 Luxury Lane, New York, NY 10001</li>
+                    </ul>
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="cart-modal">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <div id="cart-total"></div>
+        <button id="checkout-btn" class="cta-button">Proceed to Checkout</button>
+    </div>
+
+    <div id="modal-overlay"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script>
+  // Product data
+const products = [
+{id: 1, name: "Royal Crimson Shirt", price: 199.99, image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf", description: "Luxurious crimson shirt made from the finest Egyptian cotton."},
+{id: 2, name: "White Gold Pinstripe", price: 249.99, image: "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7", description: "Elegant white shirt with subtle gold pinstripes for a touch of sophistication."},
+{id: 3, name: "Midnight Elegance", price: 179.99, image: "https://images.unsplash.com/photo-1563630423918-b58f07336ac9", description: "Classic midnight blue shirt perfect for formal occasions."},
+{id: 4, name: "Classic Herringbone", price: 219.99, image: "https://images.unsplash.com/photo-1608234807905-4466023792f5", description: "Timeless herringbone pattern shirt for a refined look."},
+{id: 5, name: "Silk Blend Dress Shirt", price: 229.99, image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10", description: "Luxurious silk blend shirt for ultimate comfort and style."},
+{id: 6, name: "Textured Weave Formal Shirt", price: 189.99, image: "https://images.unsplash.com/photo-1607345366928-199ea26cfe3e", description: "Sophisticated textured weave shirt for a unique formal look."},
+{id: 7, name: "Tailored Fit Oxford Shirt", price: 159.99, image: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99", description: "Classic Oxford shirt with a modern tailored fit."},
+{id: 8, name: "Limited Edition Embroidered Shirt", price: 299.99, image: "https://images.unsplash.com/photo-1604695573706-53170668f6a6", description: "Exclusive limited edition shirt with intricate embroidery details."}
+];
+
+// Cart functionality
+let cart = [];
+
+function addToCart(productId) {
+const product = products.find(p => p.id === productId);
+if (product) {
+    cart.push(product);
+    updateCartCount();
+    console.log(`Added ${product.name} to cart`);
+}
+}
+
+function updateCartCount() {
+const cartCount = document.getElementById('cart-count');
+cartCount.textContent = cart.length;
+}
+
+function updateCartModal() {
+const cartItems = document.getElementById('cart-items');
+const cartTotal = document.getElementById('cart-total');
+
+cartItems.innerHTML = '';
+let total = 0;
+
+cart.forEach(item => {
+    const itemElement = document.createElement('div');
+    itemElement.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+    cartItems.appendChild(itemElement);
+    total += item.price;
+});
+
+cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+}
+
+// Load products
+function loadProducts() {
+const productGrid = document.getElementById('product-grid');
+productGrid.innerHTML = '';
+
+products.forEach(product => {
+    const productCard = document.createElement('div');
+    productCard.className = 'product-card';
+    productCard.innerHTML = `
+        <div class="zoom-container">
+            <div class="product-image zoom-image" style="background-image: url('${product.image}')"></div>
+        </div>
+        <div class="product-info">
+            <h3>${product.name}</h3>
+            <p>$${product.price.toFixed(2)}</p>
+        </div>
+        <div class="product-actions">
+            <button onclick="quickView(${product.id})"><i class="fas fa-eye"></i></button>
+            <button onclick="addToCart(${product.id})"><i class="fas fa-shopping-cart"></i></button>
+        </div>
+    `;
+    productGrid.appendChild(productCard);
+});
+}
+
+// Quick view functionality
+function quickView(productId) {
+const product = products.find(p => p.id === productId);
+if (product) {
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>${product.name}</h2>
+            <img src="${product.image}" alt="${product.name}">
+            <p>${product.description}</p>
+            <p>Price: $${product.price.toFixed(2)}</p>
+            <button onclick="addToCart(${product.id})">Add to Cart</button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    modal.style.display = 'block';
+
+    const closeButton = modal.querySelector('.close');
+    closeButton.onclick = function() {
+        modal.style.display = 'none';
+        document.body.removeChild(modal);
+    }
+}
+}
+
+// Cart modal
+const cartIcon = document.getElementById('cart-icon');
+const cartModal = document.getElementById('cart-modal');
+const modalOverlay = document.getElementById('modal-overlay');
+
+cartIcon.addEventListener('click', () => {
+updateCartModal();
+cartModal.style.display = 'block';
+modalOverlay.style.display = 'block';
+});
+
+modalOverlay.addEventListener('click', () => {
+cartModal.style.display = 'none';
+modalOverlay.style.display = 'none';
+});
+
+// Checkout functionality (placeholder)
+document.getElementById('checkout-btn').addEventListener('click', () => {
+console.log('Proceeding to checkout');
+// Implement checkout process
+});
+
+// Newsletter form submission
+document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+e.preventDefault();
+alert('Thank you for subscribing to our newsletter!');
+this.reset();
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+    });
+});
+});
+
+// Sticky header
+window.addEventListener('scroll', () => {
+const header = document.querySelector('header');
+header.classList.toggle('sticky', window.scrollY > 0);
+});
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+loadProducts();
+
+// GSAP animations
+gsap.from('.hero-content', {opacity: 0, y: 50, duration: 1, ease: 'power3.out'});
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.from('.product-card', {
+    scrollTrigger: {
+        trigger: '.featured-products',
+        start: 'top center'
+    },
+    opacity: 0,
+    y: 50,
+    stagger: 0.2,
+    duration: 0.8,
+    ease: 'power3.out'
+});
+
+gsap.from('.about-content', {
+    scrollTrigger: {
+        trigger: '.about-us',
+        start: 'top center'
+    },
+    opacity: 0,
+    x: -50,
+    duration: 1,
+    ease: 'power3.out'
+});
+
+gsap.from('.blog-post', {
+    scrollTrigger: {
+        trigger: '.blog-section',
+        start: 'top center'
+    },
+    opacity: 0,
+    y: 50,
+    stagger: 0.2,
+    duration: 0.8,
+    ease: 'power3.out'
+});
+});
+    </script>
+</body>
+</html>
