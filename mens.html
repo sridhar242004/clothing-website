@@ -3,924 +3,494 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crimson Elite - Luxury Men's Shirts</title>
-    <meta name="description" content="Experience unparalleled luxury with Crimson Elite's premium men's shirts. Handcrafted excellence for the distinguished gentleman.">
-    <meta name="keywords" content="luxury shirts, men's fashion, premium clothing, bespoke shirts">
-    <link rel="canonical" href="https://www.crimsonelite.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>Crimson Elite - Luxury Men's Fashion</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.31/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.9.1/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.137.5/build/three.min.js"></script>
     <style>
-        :root {
-            --primary-color: #ff0000;
-            --secondary-color: #fdfcfc;
-            --accent-color: #FFD700;
-            --text-color: #333333;
-            --background-color: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
 
         body {
             font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--background-color);
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background-color: rgb(255, 0, 0);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            transition: background-color 0.3s ease;
-        }
-
-        header.sticky {
-            background-color: rgb(255, 0, 0);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo {
+        h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: bold;
-            color: var(--secondary-color);
-            text-decoration: none;
         }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
+        .luxury-gradient {
+            background: linear-gradient(45deg, #8B0000, #FF0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .nav-links li {
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-image: url('image.png');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            
-        }
-
-        .hero-content {
-            text-align: center;
-            color: var(--secondary-color);
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 72px;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero p {
-            font-size: 24px;
-            margin-bottom: 30px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            padding: 15px 30px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-            border-radius: 5px;
+        .royal-button {
+            background: linear-gradient(45deg, #8B0000, #FF0000);
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .cta-button:hover {
-            background-color: var(--secondary-color);
-            color: var(--primary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        .royal-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .featured-products {
-            padding: 100px 0;
-            background-color: var(--secondary-color);
-        }
-
-        .featured-products h2 {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 48px;
-            margin-bottom: 60px;
-            color: var(--primary-color);
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         .product-card {
-            background-color: #FFFFFF;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
+            transition: all 0.3s ease;
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .product-image {
-            height: 300px;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.3s ease;
-        }
-
-        .product-card:hover .product-image {
-            transform: scale(1.1);
-        }
-
-        .product-info {
-            padding: 20px;
-        }
-
-        .product-info h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .product-info p {
-            font-size: 18px;
-            color: var(--text-color);
-            font-weight: bold;
-        }
-
-        .product-actions {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .product-actions button {
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .product-actions button:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .about-us {
-            padding: 100px 0;
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-        }
-
-        .about-us h2 {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 48px;
-            margin-bottom: 60px;
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .about-text {
-            flex: 1;
-            padding-right: 60px;
-        }
-
-        .about-text p {
-            font-size: 18px;
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        .about-image {
-            flex: 1;
-            height: 500px;
-            background-image: url('https://images.unsplash.com/photo-1513593771513-7b58b6c4af38');
-            background-size: cover;
-            background-position: center;
-            border-radius: 10px;
-        }
-
-        footer {
-            background-color: var(--text-color);
-            color: var(--secondary-color);
-            padding: 60px 0;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-        }
-
-        .footer-section {
-            flex: 1;
-            margin-bottom: 30px;
-            min-width: 200px;
-        }
-
-        .footer-section h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: var(--accent-color);
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 15px;
-        }
-
-        .footer-section ul li a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section ul li a:hover {
-            color: var(--accent-color);
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            margin-top: 40px;
-        }
-
-        .social-icons a {
-            color: var(--secondary-color);
-            font-size: 24px;
-            margin: 0 15px;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            color: var(--accent-color);
-            transform: scale(1.2);
-        }
-
-        #newsletter-form {
-            margin-top: 30px;
-        }
-
-        #newsletter-form input[type="email"] {
-            padding: 10px;
-            width: 70%;
-            border: none;
-            border-radius: 5px 0 0 5px;
-            font-size: 16px;
-        }
-
-        #newsletter-form button {
-            padding: 10px 20px;
-            background-color: var(--accent-color);
-            color: var(--text-color);
-            border: none;
-            border-radius: 0 5px 5px 0;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        #newsletter-form button:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .blog-section {
-            padding: 100px 0;
-            background-color: var(--background-color);
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .blog-post {
-            background-color: var(--secondary-color);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .blog-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .blog-content {
-            padding: 20px;
-        }
-
-        .blog-content h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .blog-content p {
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
-        .read-more {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .read-more:hover {
-            color: var(--accent-color);
-        }
-
-        #cart-icon {
-            position: relative;
-            cursor: pointer;
-        }
-
-        #cart-count {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            border-radius: 50%;
-            padding: 2px 6px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        #cart-modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: var(--secondary-color);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            z-index: 1001;
-        }
-
-        #cart-items {
-            margin-bottom: 20px;
-        }
-
-        #cart-total {
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        #modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-        }
-
-        .product-page {
-            padding: 100px 0;
-        }
-
-        .product-details {
-            display: flex;
-            gap: 40px;
-        }
-
-        .product-images {
-            flex: 1;
-        }
-
-        .product-info {
-            flex: 1;
-        }
-
-        .product-description {
-            margin-bottom: 20px;
-        }
-
-        .product-reviews {
-            margin-top: 40px;
-        }
-
-        .review {
-            background-color: var(--secondary-color);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .custom-designer {
-            padding: 100px 0;
-            background-color: var(--background-color);
-        }
-
-        .designer-interface {
-            display: flex;
-            gap: 40px;
-        }
-
-        .designer-options {
-            flex: 1;
-        }
-
-        .designer-preview {
-            flex: 1;
-        }
-
-        .size-guide {
-            margin-top: 40px;
-        }
-
-        .size-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .size-table th, .size-table td {
-            border: 1px solid var(--text-color);
-            padding: 10px;
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 48px;
-            }
-
-            .hero p {
-                font-size: 18px;
-            }
-
-            .about-content, .product-details, .designer-interface {
-                flex-direction: column;
-            }
-
-            .about-text, .about-image, .product-images, .product-info, .designer-options, .designer-preview {
-                width: 100%;
-            }
-
-            .footer-section {
-                flex-basis: 100%;
-            }
-        }
-
-        /* Zoom effect for product images */
-        .zoom-container {
-            overflow: hidden;
-        }
-
-        .zoom-image {
-            transition: transform 0.3s ease;
-        }
-
-        .zoom-container:hover .zoom-image {
-            transform: scale(1.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">Crimson Elite</a>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li id="cart-icon"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></li>
-                </ul>
+    <div id="app">
+        <header class="fixed w-full z-50 bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg">
+            <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <a href="#" class="text-3xl font-bold luxury-gradient">Crimson Elite</a>
+                <div class="hidden md:flex space-x-6">
+                    <a v-for="item in menuItems" :key="item.link" :href="item.link" class="text-gray-800 hover:text-red-800 transition-colors">{{ item.text }}</a>
+                </div>
+                <div class="md:hidden">
+                    <button @click="toggleMobileMenu" class="text-gray-800 hover:text-red-800 transition-colors">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </nav>
-        </div>
-    </header>
-
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>Elevate Your Style</h1>
-                <p>Experience unparalleled luxury with our premium men's shirts</p>
-                <a href="#products" class="cta-button">Shop Now</a>
+            <div v-if="mobileMenuOpen" class="md:hidden bg-white py-2">
+                <a v-for="item in menuItems" :key="item.link" :href="item.link" class="block px-4 py-2 text-gray-800 hover:text-red-800 transition-colors">{{ item.text }}</a>
             </div>
-        </section>
+        </header>
 
-        <section id="products" class="featured-products">
-            <div class="container">
-                <h2>Featured Collections</h2>
-                <div class="product-grid" id="product-grid">
-                    <!-- Products will be dynamically loaded here -->
+        <main>
+            <section id="home" class="h-screen flex items-center justify-center bg-cover bg-center parallax" style="background-image: url('image.png');">
+                <div class="text-center text-white">
+                    <h1 class="text-6xl font-bold mb-4 animate-fade-in">Crimson Elite</h1>
+                    <p class="text-xl mb-8 animate-fade-in">Redefining Luxury in Men's Fashion</p>
+                    <a href="#collections" class="royal-button px-8 py-4 rounded-full text-lg font-semibold animate-fade-in">Explore Collections</a>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="about" class="about-us">
-            <div class="container">
-                <h2>The Crimson Elite Experience</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>At Crimson Elite, we redefine luxury in men's fashion. Our shirts are more than just garments; they are a statement of sophistication and success. Crafted from the finest materials and tailored to perfection, each Crimson Elite shirt is a masterpiece of sartorial excellence.</p>
-                        <p>We understand that true elegance lies in the details. That's why we focus on creating shirts that not only look impeccable but also feel extraordinary. From our proprietary fabric blends to our meticulous stitching, every aspect of a Crimson Elite shirt is designed to elevate your style and comfort.</p>
-                        <p>Join the ranks of discerning gentlemen who choose Crimson Elite. Experience the perfect fusion of timeless elegance and modern sophistication. With Crimson Elite, you're not just wearing a shirt – you're wearing a legacy.</p>
-                    </div>
-                    <div class="about-image"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="blog" class="blog-section">
-            <div class="container">
-                <h2>Style Insights</h2>
-                <div class="blog-grid">
-                    <div class="blog-post">
-                        <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1617127365659-c47fa864d8bc')"></div>
-                        <div class="blog-content">
-                            <h3>The Art of Shirt Pairing</h3>
-                            <p>Discover the secrets to creating perfect outfit combinations with your Crimson Elite shirts.</p>
-                            <a href="#" class="read-more">Read More</a>
-                        </div>
-                    </div>
-                    <div class="blog-post">
-                        <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1598032895397-b9472444bf93')"></div>
-                        <div class="blog-content">
-                            <h3>Caring for Luxury Fabrics</h3>
-                            <p>Learn how to maintain the pristine quality of your Crimson Elite shirts for years to come.</p>
-                            <a href="#" class="read-more">Read More</a>
-                        </div>
-                    </div>
-                    <div class="blog-post">
-                        <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1604695573706-53170668f6a6')"></div>
-                        <div class="blog-content">
-                            <h3>The History of Men's Dress Shirts</h3>
-                            <p>Explore the fascinating evolution of men's dress shirts from ancient times to modern day.</p>
-                            <a href="#" class="read-more">Read More</a>
+            <section id="collections" class="py-24">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-4xl font-bold text-center mb-12 luxury-gradient">Latest Collections</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div v-for="product in products" :key="product.id" class="product-card bg-white rounded-lg shadow-lg overflow-hidden">
+                            <img :src="product.image" :alt="product.name" class="w-full h-64 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">{{ product.name }}</h3>
+                                <p class="text-gray-600 mb-4">{{ product.description }}</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xl font-bold">${{ product.price }}</span>
+                                    <button class="royal-button px-4 py-2 rounded-full text-white">Add to Cart</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="custom-designer" class="custom-designer">
-            <div class="container">
-                <h2>Design Your Own Shirt</h2>
-                <div class="designer-interface">
-                    <div class="designer-options">
-                        <!-- Options for customization will be added here -->
+            <section id="virtual-fitting-room" class="py-24 bg-gray-100">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-4xl font-bold text-center mb-12 luxury-gradient">Virtual Fitting Room</h2>
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="md:w-1/2 mb-8 md:mb-0">
+                            <div id="virtual-model" class="w-full h-[400px] bg-gray-200 rounded-lg"></div>
+                        </div>
+                        <div class="md:w-1/3">
+                            <h3 class="text-2xl font-bold mb-4">Try On Our Latest Styles</h3>
+                            <p class="mb-6">Experience our collection from the comfort of your home with our state-of-the-art virtual fitting room.</p>
+                            <div class="grid grid-cols-2 gap-4 mb-4">
+                                <button v-for="option in clothingOptions" :key="option" @click="changeClothing(option)" class="royal-button px-4 py-2 rounded-full text-white">{{ option }}</button>
+                            </div>
+                            <button class="royal-button px-6 py-3 rounded-full text-white w-full">Start Virtual Fitting</button>
+                        </div>
                     </div>
-                    <div class="designer-preview">
-                        <!-- Preview of the custom shirt will be shown here -->
+                </div>
+            </section>
+
+            <section id="configurator" class="py-24">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-4xl font-bold text-center mb-12 luxury-gradient">Custom Product Configurator</h2>
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/2">
+                            <div id="configurator-preview" class="bg-gray-200 p-4 rounded-lg h-[400px]"></div>
+                        </div>
+                        <div class="md:w-1/2">
+                            <div id="product-configurator" class="space-y-4">
+                                <div v-for="option in configuratorOptions" :key="option.name" class="mb-4">
+                                    <label :for="option.name" class="block text-sm font-medium text-gray-700 mb-1">{{ option.label }}</label>
+                                    <select :id="option.name" v-model="option.value" @change="updateConfigurator" class="w-full border border-gray-300 rounded-md py-2 px-3">
+                                        <option v-for="choice in option.choices" :key="choice" :value="choice">{{ choice }}</option>
+                                    </select>
+                                </div>
+                                <button class="royal-button px-6 py-3 rounded-full text-white w-full">Add to Cart</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="size-guide" class="size-guide">
-            <div class="container">
-                <h2>Size Guide</h2>
-                <table class="size-table">
-                    <thead>
-                        <tr>
-                            <th>Size</th>
-                            <th>Neck</th>
-                            <th>Chest</th>
-                            <th>Waist</th>
-                            <th>Sleeve</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Size information will be added here -->
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </main>
+            <section id="virtual-stylist" class="py-24 bg-gray-100">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-4xl font-bold text-center mb-12 luxury-gradient">Virtual Stylist</h2>
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/2">
+                            <div class="virtual-stylist-chat bg-white rounded-lg shadow-lg p-4 h-[400px] overflow-y-auto">
+                                <div id="chat-messages">
+                                    <div v-for="message in chatMessages" :key="message.id" :class="['mb-4', message.sender === 'user' ? 'text-right' : 'text-left']">
+                                        <span :class="['inline-block', 'rounded-lg', 'px-4', 'py-2', message.sender === 'user' ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800']">
+                                            {{ message.text }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex">
+                                <input v-model="userInput" @keyup.enter="sendMessage" type="text" placeholder="Ask your stylist..." class="flex-grow border border-gray-300 rounded-l-md py-2 px-3">
+                                <button @click="sendMessage" class="royal-button px-6 py-2 rounded-r-md text-white">Send</button>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2">
+                            <h3 class="text-2xl font-bold mb-4">Stylist Recommendations</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div v-for="recommendation in stylistRecommendations" :key="recommendation.id" class="bg-white rounded-lg shadow-lg p-4">
+                                    <img :src="recommendation.image" :alt="recommendation.name" class="w-full h-48 object-cover mb-4 rounded">
+                                    <h4 class="text-lg font-bold mb-2">{{ recommendation.name }}</h4>
+                                    <p class="text-gray-600 mb-4">{{ recommendation.description }}</p>
+                                    <button class="royal-button px-4 py-2 rounded-full text-white w-full">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
+        <footer class="bg-gray-900 text-white py-12">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Crimson Elite</h3>
+                        <p>Redefining luxury in men's fashion since 1950.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li v-for="link in quickLinks" :key="link.text"><a :href="link.url" class="hover:text-red-500 transition-colors">{{ link.text }}</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Customer Care</h3>
+                        <ul class="space-y-2">
+                            <li v-for="link in customerCareLinks" :key="link.text"><a :href="link.url" class="hover:text-red-500 transition-colors">{{ link.text }}</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+                        <div class="flex space-x-4 mb-4">
+                            <a v-for="social in socialLinks" :key="social.platform" :href="social.url" class="text-2xl hover:text-red-500 transition-colors">
+                                <i :class="social.icon"></i>
+                            </a>
+                        </div>
+                        <form @submit.prevent="subscribeNewsletter" class="flex">
+                            <input v-model="newsletterEmail" type="email" placeholder="Your email" class="flex-grow bg-gray-800 text-white rounded-l-md py-2 px-3">
+                            <button type="submit" class="royal-button px-4 py-2 rounded-r-md">Subscribe</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h3>Customer Care</h3>
-                    <ul>
-                        <li><a href="#">Shipping & Returns</a></li>
-                        <li><a href="#">Size Guide</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Connect With Us</h3>
-                    <ul>
-                        <li>Email: info@crimsonelite.com</li>
-                        <li>Phone: +1 (800) 555-ELITE</li>
-                        <li>Address: 123 Luxury Lane, New York, NY 10001</li>
-                    </ul>
-                    <form id="newsletter-form">
-                        <input type="email" placeholder="Enter your email" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
+                <div class="mt-8 text-center">
+                    <p>&copy; 2024 Crimson Elite. All rights reserved.</p>
                 </div>
             </div>
-            <div class="social-icons">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <div id="cart-modal">
-        <h2>Your Cart</h2>
-        <div id="cart-items"></div>
-        <div id="cart-total"></div>
-        <button id="checkout-btn" class="cta-button">Proceed to Checkout</button>
+        </footer>
     </div>
 
-    <div id="modal-overlay"></div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
     <script>
-  // Product data
-const products = [
-{id: 1, name: "Royal Crimson Shirt", price: 199.99, image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf", description: "Luxurious crimson shirt made from the finest Egyptian cotton."},
-{id: 2, name: "White Gold Pinstripe", price: 249.99, image: "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7", description: "Elegant white shirt with subtle gold pinstripes for a touch of sophistication."},
-{id: 3, name: "Midnight Elegance", price: 179.99, image: "https://images.unsplash.com/photo-1563630423918-b58f07336ac9", description: "Classic midnight blue shirt perfect for formal occasions."},
-{id: 4, name: "Classic Herringbone", price: 219.99, image: "https://images.unsplash.com/photo-1608234807905-4466023792f5", description: "Timeless herringbone pattern shirt for a refined look."},
-{id: 5, name: "Silk Blend Dress Shirt", price: 229.99, image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10", description: "Luxurious silk blend shirt for ultimate comfort and style."},
-{id: 6, name: "Textured Weave Formal Shirt", price: 189.99, image: "https://images.unsplash.com/photo-1607345366928-199ea26cfe3e", description: "Sophisticated textured weave shirt for a unique formal look."},
-{id: 7, name: "Tailored Fit Oxford Shirt", price: 159.99, image: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99", description: "Classic Oxford shirt with a modern tailored fit."},
-{id: 8, name: "Limited Edition Embroidered Shirt", price: 299.99, image: "https://images.unsplash.com/photo-1604695573706-53170668f6a6", description: "Exclusive limited edition shirt with intricate embroidery details."}
-];
+        const app = Vue.createApp({
+            data() {
+                return {
+                    mobileMenuOpen: false,
+                    menuItems: [
+                        { text: 'Home', link: '#home' },
+                        { text: 'Collections', link: '#collections' },
+                        { text: 'Virtual Fitting', link: '#virtual-fitting-room' },
+                        { text: 'Configurator', link: '#configurator' },
+                        { text: 'Virtual Stylist', link: '#virtual-stylist' },
+                    ],
+                    products: [
+                        { id: 1, name: 'Classic Suit', description: 'Elegant and timeless', price: 999, image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
+                        { id: 2, name: 'Designer Watch', description: 'Luxury timepiece', price: 2999, image: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
+                        { id: 3, name: 'Leather Shoes', description: 'Hand-crafted excellence', price: 599, image: 'https://images.unsplash.com/photo-1531310197839-ccf54634509e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
+                    ],
+                    clothingOptions: ['Suits', 'Shirts', 'Pants', 'Accessories'],
+                    configuratorOptions: [
+                        { name: 'fabric', label: 'Fabric', value: 'wool', choices: ['wool', 'cotton', 'linen', 'silk'] },
+                        { name: 'color', label: 'Color', value: 'navy', choices: ['navy', 'black', 'gray', 'brown'] },
+                        { name: 'fit', label: 'Fit', value: 'slim', choices: ['slim', 'regular', 'relaxed'] },
+                        { name: 'style', label: 'Style', value: 'single-breasted', choices: ['single-breasted', 'double-breasted', 'tuxedo'] },
+                    ],
+                    chatMessages: [
+                        { id: 1, sender: 'stylist', text: 'Hello! I\'m your personal stylist. How can I assist you today?' },
+                    ],
+                    userInput: '',
+                    stylistRecommendations: [
+                        { id: 1, name: 'Summer Linen Suit', description: 'Perfect for warm weather events', image: 'https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
+                        { id: 2, name: 'Cashmere Sweater', description: 'Luxurious comfort for cooler days', image: 'https://images.unsplash.com/photo-1599256621730-535171e28e50?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
+                    ],
+                    quickLinks: [
+                        { text: 'About Us', url: '#' },
+                        { text: 'Careers', url: '#' },
+                        { text: 'Press', url: '#' },
+                        { text: 'Sustainability', url: '#' },
+                    ],
+                    customerCareLinks: [
+                        { text: 'Contact Us', url: '#' },
+                        { text: 'Shipping & Returns', url: '#' },
+                        { text: 'Size Guide', url: '#' },
+                        { text: 'FAQ', url: '#' },
+                    ],
+                    socialLinks: [
+                        { platform: 'Facebook', url: '#', icon: 'fab fa-facebook' },
+                        { platform: 'Instagram', url: '#', icon: 'fab fa-instagram' },
+                        { platform: 'Twitter', url: '#', icon: 'fab fa-twitter' },
+                        { platform: 'LinkedIn', url: '#', icon: 'fab fa-linkedin' },
+                    ],
+                    newsletterEmail: '',
+                };
+            },
+            methods: {
+                toggleMobileMenu() {
+                    this.mobileMenuOpen = !this.mobileMenuOpen;
+                },
+                changeClothing(option) {
+                    console.log(`Changing to ${option}`);
+                    // Implement virtual fitting room logic here
+                    
+                    // Define a mapping of clothing options to 3D model file names
+                    const modelMap = {
+                        'Suits': 'suit.gltf',
+                        'Shirts': 'shirt.gltf',
+                        'Pants': 'pants.gltf',
+                        'Accessories': 'accessory.gltf'
+                    };
+                
+                    // Remove existing model from the scene
+                    if (this.currentModel) {
+                        this.scene.remove(this.currentModel);
+                    }
+                
+                    // Load the new 3D model
+                    const loader = new THREE.GLTFLoader();
+                    loader.load(
+                        `models/${modelMap[option]}`,
+                        (gltf) => {
+                            this.currentModel = gltf.scene;
+                            this.scene.add(this.currentModel);
+                
+                            // Adjust model position and scale as needed
+                            this.currentModel.position.set(0, 0, 0);
+                            this.currentModel.scale.set(1, 1, 1);
+                
+                            // Update material to show different colors or patterns
+                            this.currentModel.traverse((child) => {
+                                if (child.isMesh) {
+                                    child.material = new THREE.MeshPhongMaterial({
+                                        color: 0x5555ff,  // Default blue color
+                                        specular: 0x111111,
+                                        shininess: 30
+                                    });
+                                }
+                            });
+                
+                            // Trigger a re-render
+                            this.renderer.render(this.scene, this.camera);
+                        },
+                        (xhr) => {
+                            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                        },
+                        (error) => {
+                            console.error('An error occurred while loading the model:', error);
+                        }
+                    );
+                
+                    // Update UI to reflect the current selection
+                    this.currentClothing = option;
+                },
+                
+                updateConfigurator() {
+                    console.log('Updating configurator');
+                    // Implement configurator update logic here
+                    
+                    // Get current configuration
+                    const fabric = this.configuratorOptions.find(opt => opt.name === 'fabric').value;
+                    const color = this.configuratorOptions.find(opt => opt.name === 'color').value;
+                    const fit = this.configuratorOptions.find(opt => opt.name === 'fit').value;
+                    const style = this.configuratorOptions.find(opt => opt.name === 'style').value;
+                
+                    // Update 3D model based on configuration
+                    if (this.configuratorModel) {
+                        // Update fabric texture
+                        const textureLoader = new THREE.TextureLoader();
+                        textureLoader.load(`textures/${fabric}.jpg`, (texture) => {
+                            this.configuratorModel.material.map = texture;
+                            this.configuratorModel.material.needsUpdate = true;
+                        });
+                
+                        // Update color
+                        this.configuratorModel.material.color.setHex(this.getColorHex(color));
+                
+                        // Update fit (scale the model)
+                        const fitScale = this.getFitScale(fit);
+                        this.configuratorModel.scale.set(fitScale, fitScale, fitScale);
+                
+                        // Update style (swap model or modify geometry)
+                        this.updateModelStyle(style);
+                
+                        // Trigger a re-render
+                        this.configuratorRenderer.render(this.configuratorScene, this.configuratorCamera);
+                    }
+                
+                    // Update price based on selections
+                    this.updatePrice();
+                
+                    // Generate product description
+                    this.productDescription = `Custom ${style} suit in ${color} ${fabric}, ${fit} fit`;
+                },
+                
+                getColorHex(color) {
+                    const colorMap = {
+                        'navy': 0x000080,
+                        'black': 0x000000,
+                        'gray': 0x808080,
+                        'brown': 0x8B4513
+                    };
+                    return colorMap[color] || 0x000000;
+                },
+                
+                getFitScale(fit) {
+                    const fitMap = {
+                        'slim': 0.9,
+                        'regular': 1.0,
+                        'relaxed': 1.1
+                    };
+                    return fitMap[fit] || 1.0;
+                },
+                
+                updateModelStyle(style) {
+                    // This would involve loading different base models or modifying the existing geometry
+                    // For simplicity, we'll just log the change
+                    console.log(`Updating model style to: ${style}`);
+                    // In a real implementation, you might swap out the entire model or modify its geometry
+                },
+                
+                updatePrice() {
+                    // Base price
+                    let price = 1000;
+                
+                    // Add price modifiers based on selections
+                    const fabric = this.configuratorOptions.find(opt => opt.name === 'fabric').value;
+                    if (fabric === 'silk') price += 200;
+                    if (fabric === 'wool') price += 100;
+                
+                    const style = this.configuratorOptions.find(opt => opt.name === 'style').value;
+                    if (style === 'tuxedo') price += 300;
+                
+                    // Update the price in the component's data
+                    this.configuratorPrice = price;
+                },
+                sendMessage() {
+                    if (this.userInput.trim()) {
+                        this.chatMessages.push({ id: Date.now(), sender: 'user', text: this.userInput });
+                        this.generateStylistResponse();
+                        this.userInput = '';
+                    }
+                },
+                generateStylistResponse() {
+                    // Simulate AI response (replace with actual AI integration)
+                    setTimeout(() => {
+                        this.chatMessages.push({
+                            id: Date.now(),
+                            sender: 'stylist',
+                            text: 'Thank you for your message. I recommend trying our new summer collection, which includes lightweight fabrics perfect for the season.'
+                        });
+                    }, 1000);
+                },
+                subscribeNewsletter() {
+                    if (this.newsletterEmail) {
+                        console.log(`Subscribing ${this.newsletterEmail} to newsletter`);
+                        // Implement newsletter subscription logic here
+                        this.newsletterEmail = '';
+                        alert('Thank you for subscribing to our newsletter!');
+                    }
+                }
+            },
+            mounted() {
+                // Initialize GSAP animations
+                gsap.from('.animate-fade-in', {
+                    opacity: 0,
+                    y: 50,
+                    duration: 1,
+                    stagger: 0.2,
+                    ease: 'power2.out'
+                });
 
-// Cart functionality
-let cart = [];
+                // Initialize Three.js for virtual fitting room
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, 400 / 400, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer();
+                renderer.setSize(400, 400);
+                document.getElementById('virtual-model').appendChild(renderer.domElement);
 
-function addToCart(productId) {
-const product = products.find(p => p.id === productId);
-if (product) {
-    cart.push(product);
-    updateCartCount();
-    console.log(`Added ${product.name} to cart`);
-}
-}
+                const geometry = new THREE.BoxGeometry();
+                const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+                const cube = new THREE.Mesh(geometry, material);
+                scene.add(cube);
 
-function updateCartCount() {
-const cartCount = document.getElementById('cart-count');
-cartCount.textContent = cart.length;
-}
+                camera.position.z = 5;
 
-function updateCartModal() {
-const cartItems = document.getElementById('cart-items');
-const cartTotal = document.getElementById('cart-total');
+                function animate() {
+                    requestAnimationFrame(animate);
+                    cube.rotation.x += 0.01;
+                    cube.rotation.y += 0.01;
+                    renderer.render(scene, camera);
+                }
+                animate();
 
-cartItems.innerHTML = '';
-let total = 0;
+                // Initialize product configurator
+                const configuratorScene = new THREE.Scene();
+                const configuratorCamera = new THREE.PerspectiveCamera(75, 400 / 400, 0.1, 1000);
+                const configuratorRenderer = new THREE.WebGLRenderer();
+                configuratorRenderer.setSize(400, 400);
+                document.getElementById('configurator-preview').appendChild(configuratorRenderer.domElement);
 
-cart.forEach(item => {
-    const itemElement = document.createElement('div');
-    itemElement.textContent = `${item.name} - $${item.price.toFixed(2)}`;
-    cartItems.appendChild(itemElement);
-    total += item.price;
-});
+                const configuratorGeometry = new THREE.ConeGeometry(1, 2, 32);
+                const configuratorMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+                const configuratorCone = new THREE.Mesh(configuratorGeometry, configuratorMaterial);
+                configuratorScene.add(configuratorCone);
 
-cartTotal.textContent = `Total: $${total.toFixed(2)}`;
-}
+                configuratorCamera.position.z = 5;
 
-// Load products
-function loadProducts() {
-const productGrid = document.getElementById('product-grid');
-productGrid.innerHTML = '';
+                function animateConfigurator() {
+                    requestAnimationFrame(animateConfigurator);
+                    configuratorCone.rotation.x += 0.01;
+                    configuratorCone.rotation.y += 0.01;
+                    configuratorRenderer.render(configuratorScene, configuratorCamera);
+                }
+                animateConfigurator();
+            }
+        });
 
-products.forEach(product => {
-    const productCard = document.createElement('div');
-    productCard.className = 'product-card';
-    productCard.innerHTML = `
-        <div class="zoom-container">
-            <div class="product-image zoom-image" style="background-image: url('${product.image}')"></div>
-        </div>
-        <div class="product-info">
-            <h3>${product.name}</h3>
-            <p>$${product.price.toFixed(2)}</p>
-        </div>
-        <div class="product-actions">
-            <button onclick="quickView(${product.id})"><i class="fas fa-eye"></i></button>
-            <button onclick="addToCart(${product.id})"><i class="fas fa-shopping-cart"></i></button>
-        </div>
-    `;
-    productGrid.appendChild(productCard);
-});
-}
-
-// Quick view functionality
-function quickView(productId) {
-const product = products.find(p => p.id === productId);
-if (product) {
-    const modal = document.createElement('div');
-    modal.className = 'modal';
-    modal.innerHTML = `
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>${product.name}</h2>
-            <img src="${product.image}" alt="${product.name}">
-            <p>${product.description}</p>
-            <p>Price: $${product.price.toFixed(2)}</p>
-            <button onclick="addToCart(${product.id})">Add to Cart</button>
-        </div>
-    `;
-    document.body.appendChild(modal);
-    modal.style.display = 'block';
-
-    const closeButton = modal.querySelector('.close');
-    closeButton.onclick = function() {
-        modal.style.display = 'none';
-        document.body.removeChild(modal);
-    }
-}
-}
-
-// Cart modal
-const cartIcon = document.getElementById('cart-icon');
-const cartModal = document.getElementById('cart-modal');
-const modalOverlay = document.getElementById('modal-overlay');
-
-cartIcon.addEventListener('click', () => {
-updateCartModal();
-cartModal.style.display = 'block';
-modalOverlay.style.display = 'block';
-});
-
-modalOverlay.addEventListener('click', () => {
-cartModal.style.display = 'none';
-modalOverlay.style.display = 'none';
-});
-
-// Checkout functionality (placeholder)
-document.getElementById('checkout-btn').addEventListener('click', () => {
-console.log('Proceeding to checkout');
-// Implement checkout process
-});
-
-// Newsletter form submission
-document.getElementById('newsletter-form').addEventListener('submit', function(e) {
-e.preventDefault();
-alert('Thank you for subscribing to our newsletter!');
-this.reset();
-});
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-    });
-});
-});
-
-// Sticky header
-window.addEventListener('scroll', () => {
-const header = document.querySelector('header');
-header.classList.toggle('sticky', window.scrollY > 0);
-});
-
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-loadProducts();
-
-// GSAP animations
-gsap.from('.hero-content', {opacity: 0, y: 50, duration: 1, ease: 'power3.out'});
-
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.from('.product-card', {
-    scrollTrigger: {
-        trigger: '.featured-products',
-        start: 'top center'
-    },
-    opacity: 0,
-    y: 50,
-    stagger: 0.2,
-    duration: 0.8,
-    ease: 'power3.out'
-});
-
-gsap.from('.about-content', {
-    scrollTrigger: {
-        trigger: '.about-us',
-        start: 'top center'
-    },
-    opacity: 0,
-    x: -50,
-    duration: 1,
-    ease: 'power3.out'
-});
-
-gsap.from('.blog-post', {
-    scrollTrigger: {
-        trigger: '.blog-section',
-        start: 'top center'
-    },
-    opacity: 0,
-    y: 50,
-    stagger: 0.2,
-    duration: 0.8,
-    ease: 'power3.out'
-});
-});
+        app.mount('#app');
     </script>
 </body>
 </html>
